@@ -114,28 +114,38 @@ const data = [
 */
 
 //step1:
-// funtion articleMaker(titleData, dateData, para){
-
-// }
-
-data.forEach((artData) => {
+function articleMaker(titleData, dateData, p1Data, p2Data, p3Data){
   let artMaker = document.createElement('div');
   artMaker.classList.add('article');
   document.body.appendChild(artMaker);
 
   let titleMaker = document.createElement('h2');
-  console.log(artData.title);
-  titleMaker.textContent = artData.title;
+  titleMaker.textContent = titleData;
   artMaker.appendChild(titleMaker);
 
   let dateMaker = document.createElement('p');
   dateMaker.classList.add('date');
-  dateMaker.textContent = artData.date;
+  dateMaker.textContent = dateData;
   artMaker.appendChild(dateMaker);
 
-  let paraMaker = document.createElement('p');
-  paraMaker.textContent = artData.firstParagraph;
-  artMaker.appendChild(paraMaker);
 
- 
+  let para1Maker = document.createElement('p');
+  para1Maker.textContent = p1Data;
+  artMaker.appendChild(para1Maker);
+
+  let para2Maker = document.createElement('p');
+  para2Maker.textContent = p2Data;
+  artMaker.appendChild(para2Maker);
+
+  let para3Maker = document.createElement('p');
+  para3Maker.textContent = p3Data;
+  artMaker.appendChild(para3Maker);
+
+
+
+  return artMaker;
+};
+
+data.forEach((artOjb) => {
+  articleMaker(artOjb.title, artOjb.date, artOjb.firstParagraph, artOjb.secondParagraph,artOjb.thirdParagraph);
 });
