@@ -85,15 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'One Step At A Time',
+    date: 'April 14, 2020',
+    firstParagraph: `aaa...bbb..ccc...ddd...fff..ggg`,
+    secondParagraph: `111...222...333..444...555.666`,
+    thirdParagraph: `blueblueblue...redredred...yellowyellowyellow`
   }
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
-
+    <h2> the article}</p>
+{title of the article}</h2>
+    <p class="date">{date of
     {three separate paragraph elements}
 
     <span class='expandButton'></span>
@@ -112,3 +119,53 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//step1:
+function articleMaker(titleData, dateData, p1Data, p2Data, p3Data){
+  let artMaker = document.createElement('div');
+  artMaker.classList.add('article');
+  document.body.appendChild(artMaker);
+
+  let titleMaker = document.createElement('h2');
+  titleMaker.textContent = titleData;
+  artMaker.appendChild(titleMaker);
+
+  let dateMaker = document.createElement('p');
+  dateMaker.classList.add('date');
+  dateMaker.textContent = dateData;
+  artMaker.appendChild(dateMaker);
+
+
+  let para1Maker = document.createElement('p');
+  para1Maker.textContent = p1Data;
+  artMaker.appendChild(para1Maker);
+
+  let para2Maker = document.createElement('p');
+  para2Maker.textContent = p2Data;
+  artMaker.appendChild(para2Maker);
+
+  let para3Maker = document.createElement('p');
+  para3Maker.textContent = p3Data;
+  artMaker.appendChild(para3Maker);
+  
+  let spanMaker = document.createElement('span');
+  spanMaker.classList.add('expandButton');
+  spanMaker.textContent = 'More Info';
+  artMaker.appendChild(spanMaker); 
+
+  spanMaker.addEventListener('click', (event) => {
+    let result = event.target.parentElement.classList.toggle('article-open');
+    if (result) {
+      spanMaker.textContent = 'Less Info';
+    } else {
+      spanMaker.textContent = 'More Info';
+    }
+  });
+
+  return artMaker;
+};
+
+data.forEach((artOjb) => {
+  articleMaker(artOjb.title, artOjb.date, artOjb.firstParagraph, artOjb.secondParagraph,artOjb.thirdParagraph);
+});
+
