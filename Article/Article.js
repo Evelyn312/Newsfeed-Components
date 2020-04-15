@@ -114,6 +114,9 @@ const data = [
 */
 
 //step1:
+// funtion articleMaker(titleData, dateData, para){
+
+// }
 
 data.forEach((artData) => {
   let artMaker = document.createElement('div');
@@ -125,7 +128,14 @@ data.forEach((artData) => {
   titleMaker.textContent = artData.title;
   artMaker.appendChild(titleMaker);
 
-  
+  let dateMaker = document.createElement('p');
+  dateMaker.classList.add('date');
+  dateMaker.textContent = artData.date;
+  artMaker.appendChild(dateMaker);
+
+  let paraMaker = document.createElement('p');
+  paraMaker.textContent = artData.firstParagraph;
+  artMaker.appendChild(paraMaker);
 
  
 });
